@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Animals {
+  id        String  @id @unique @default(uuid())
+  name      String  
+  sex       Sex
+  species   Species
+  endangered Boolean
+
+  @@map(name: "animals")
+}
+
+enum Sex {
+  MALE
+  FEMALE
+}
+
+enum Species {
+  MAMMALS
+  BIRDS
+  FISH
+  REPTILES
+}
