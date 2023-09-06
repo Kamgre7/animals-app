@@ -5,6 +5,7 @@
     "sourceMap": true,
     "target": "ES6",
     "downlevelIteration": true,
+    "types": ["reflect-metadata"],
     "module": "CommonJS",
     "lib": ["es6"],
     "outDir": "dist",
