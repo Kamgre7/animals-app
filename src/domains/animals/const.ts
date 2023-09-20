@@ -1,6 +1,6 @@
 export enum Sex {
   MALE = 'MALE',
-  FAMALE = 'FEMALE',
+  FEMALE = 'FEMALE',
 }
 
 export enum Species {
