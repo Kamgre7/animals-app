@@ -7,7 +7,7 @@ export const AppSchema = z.object({
   port: z
     .string()
     .nonempty()
-    .transform((arg) => (isNaN(parseInt(arg)) ? 3001 : Number(arg))),
+    .transform((arg) => (isNaN(parseInt(arg)) ? 3000 : Number(arg))),
   host: z.string().nonempty(),
   hostName: z.string().nonempty(),
 });
