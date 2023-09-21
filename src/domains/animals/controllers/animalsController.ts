@@ -1,5 +1,5 @@
-import 'reflect-metadata';
 import { inject, injectable } from 'inversify';
+import 'reflect-metadata';
 import { IAnimalsService } from '../services/animalsService';
 import { Request, Response } from 'express';
 import { TYPES } from '../../types/types';
@@ -79,6 +79,7 @@ export class AnimalsController implements IAnimalsController {
   }
 
   async getAll(req: Request, res: Response): Promise<void> {
+    console.log(this.animalsService);
     const animals = await this.animalsService.getAll();
 
     res.status(200).json(animals);

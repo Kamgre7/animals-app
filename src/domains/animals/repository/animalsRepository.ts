@@ -1,7 +1,7 @@
+import { injectable } from 'inversify';
 import 'reflect-metadata';
 import { Animals } from '@prisma/client';
 import { prisma } from '../../../db/db';
-import { injectable } from 'inversify';
 import { PartialAnimalRecordWithoutId } from '../schemas/updateByIdSchema';
 import { AnimalInfo } from '../schemas/createSchema';
 import { BadRequestError } from '../../../errors/badRequestError';

@@ -1,6 +1,6 @@
+import { inject, injectable } from 'inversify';
 import 'reflect-metadata';
 import { IAnimalsRepository } from '../repository/animalsRepository';
-import { inject, injectable } from 'inversify';
 import { TYPES } from '../../types/types';
 import { Animals } from '@prisma/client';
 import { BadRequestError } from '../../../errors/badRequestError';
