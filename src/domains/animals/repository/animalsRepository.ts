@@ -19,9 +19,9 @@ export class AnimalsRepository implements IAnimalsRepository {
   constructor(private readonly animals = prisma.animals) {}
 
   async create(data: AnimalInfo): Promise<string> {
-    const existingAnimal = await this.removeDuplicatedAnimals([data]);
+    const animalWithoutDuplicate = await this.removeDuplicatedAnimals([data]);
 
-    if (existingAnimal.length === 0) {
+    if (animalWithoutDuplicate.length === 0) {
       throw new BadRequestError('Animal already exists');
     }
 
@@ -68,7 +68,7 @@ export class AnimalsRepository implements IAnimalsRepository {
   ): Promise<AnimalInfo[]> {
     const duplicate = await this.findDuplicatedAnimals(data);
 
-    return duplicate.filter((value) => value === null) as AnimalInfo[];
+    return duplicate.filter((value) => value !== null) as AnimalInfo[];
   }
 
   private async findDuplicatedAnimals(
