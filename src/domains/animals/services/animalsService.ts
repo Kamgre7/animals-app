@@ -63,6 +63,8 @@ export class AnimalsService implements IAnimalsService {
     id: string,
     data: PartialAnimalRecordWithoutId
   ): Promise<void> {
+    await this.getOne(id);
+
     await this.animalsRepository.updateById(id, data);
   }
 }
