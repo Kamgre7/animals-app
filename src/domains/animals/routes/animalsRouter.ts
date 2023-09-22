@@ -1,15 +1,15 @@
 import { Router } from 'express';
-import { container } from '../ioc/inversify.config';
-import { TYPES } from '../domains/types/types';
-import { IAnimalsController } from '../domains/animals/controllers/animalsController';
-import { requestValidator } from '../middlewares/requestValidator';
-import { GetOneSchema } from '../domains/animals/schemas/getOneSchema';
-import { UpdateByIdSchema } from '../domains/animals/schemas/updateByIdSchema';
+import { container } from '../../../ioc/inversify.config';
+import { TYPES } from '../../types/types';
+import { IAnimalsController } from '../controllers/animalsController';
+import { requestValidator } from '../../../middlewares/requestValidator';
+import { GetOneSchema } from '../schemas/getOneSchema';
+import { UpdateByIdSchema } from '../schemas/updateByIdSchema';
 import {
   CreateAnimalSchema,
   CreateMultipleAnimalSchema,
-} from '../domains/animals/schemas/createSchema';
-import { CreateAnimalsByTypeSchema } from '../domains/animals/schemas/createByTypeSchema';
+} from '../schemas/createSchema';
+import { CreateAnimalsByTypeSchema } from '../schemas/createByTypeSchema';
 
 export const animalsRouter = Router();
 
