@@ -37,20 +37,20 @@ export class AnimalsController implements IAnimalsController {
     private readonly animalsService: IAnimalsService
   ) {}
 
-  async create(
+  create = async (
     req: ParsedRequest<CreateAnimalReq>,
     res: Response
-  ): Promise<void> {
+  ): Promise<void> => {
     const data = req.body;
     const animalId = await this.animalsService.create(data);
 
     res.status(201).json(animalId);
-  }
+  };
 
-  async createMultiple(
+  createMultiple = async (
     req: ParsedRequest<CreateMultipleAnimalReq>,
     res: Response
-  ): Promise<void> {
+  ): Promise<void> => {
     const { animals } = req.body;
     const createdAnimalsCounter = await this.animalsService.createMultiple(
       animals
@@ -59,12 +59,12 @@ export class AnimalsController implements IAnimalsController {
     res.status(201).json({
       createdAnimals: createdAnimalsCounter,
     });
-  }
+  };
 
-  async createByType(
+  createByType = async (
     req: ParsedRequest<CreateAnimalsByTypeReq>,
     res: Response
-  ): Promise<void> {
+  ): Promise<void> => {
     const { animals } = req.body;
     const { type } = req.params;
 
@@ -76,34 +76,33 @@ export class AnimalsController implements IAnimalsController {
     res.status(201).json({
       createdAnimals: createdAnimalsCounter,
     });
-  }
+  };
 
-  async getAll(req: Request, res: Response): Promise<void> {
-    console.log(this.animalsService);
+  getAll = async (req: Request, res: Response): Promise<void> => {
     const animals = await this.animalsService.getAll();
 
     res.status(200).json(animals);
-  }
+  };
 
-  async getOne(
+  getOne = async (
     req: ParsedRequest<GetOneAnimalReq>,
     res: Response
-  ): Promise<void> {
+  ): Promise<void> => {
     const { id } = req.params;
     const animal = await this.animalsService.getOne(id);
 
     res.status(200).json(animal);
-  }
+  };
 
-  async updateById(
+  updateById = async (
     req: ParsedRequest<UpdateByIdAnimalReq>,
     res: Response
-  ): Promise<void> {
+  ): Promise<void> => {
     const { id } = req.params;
     const data = req.body;
 
     await this.animalsService.updateById(id, data);
 
     res.status(204).end();
-  }
+  };
 }
