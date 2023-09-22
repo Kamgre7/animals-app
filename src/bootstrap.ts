@@ -1,7 +1,7 @@
 import express, { Application } from 'express';
 import 'reflect-metadata';
 import 'express-async-errors';
-import { animalsRouter } from './routes/animalsRouter';
+import { animalsRouter } from './domains/animals/routes/animalsRouter';
 import { appConfig } from './config/appConfig';
 import { errorHandler } from './middlewares/errorHandler';
 
