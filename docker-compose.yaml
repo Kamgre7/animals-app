@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  node-app:
+    image: node:20-alpine3.17
+    working_dir: /app
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - ${PORT}:${PORT}
+    env_file: ./.env
+    command: npm run start
+    networks:
+      - local
+    depends_on:
+      - db
+  db:
+    extends:
+      file: docker-compose.database.yml
+      service: db
+    networks:
+      - local
