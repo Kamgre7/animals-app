@@ -6,4 +6,3 @@ node_modules
 .dockeignore
 dist
 readme.md
-prisma/migrations
