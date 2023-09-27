@@ -30,7 +30,7 @@ export class Bootstrap {
   }
 
   private startServer() {
-    this.app.listen(appConfig.port, appConfig.hostName, () => {
+    this.app.listen(appConfig.port, () => {
       console.log(
         `Application is running on ${appConfig.host}:${appConfig.port}`
       );
