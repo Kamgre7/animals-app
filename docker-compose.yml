@@ -1,11 +1,12 @@
 version: '3.8'
 services:
   node-app:
-    image: node:20-alpine3.17
-    working_dir: /app
+    build:
+      context: .
+      target: build
     volumes:
-      - .:/app
-      - /app/node_modules
+      - .:/home
+      - /home/node_modules
     ports:
       - ${PORT}:${PORT}
     env_file: ./.env
@@ -16,7 +17,14 @@ services:
       - db
   db:
     extends:
-      file: docker-compose.database.yml
+      file: docker-compose.db.yml
       service: db
     networks:
       - local
+
+networks:
+  local:
+    driver: bridge
+
+volumes:
+  postgres-data:
