@@ -1,21 +1,29 @@
-FROM node:20-alpine3.17
+FROM node:20-alpine3.17 as build
+#FROM node:20-alpine3.17 AS builder
 
-WORKDIR /app
+WORKDIR /home
 
-COPY package.json .
-COPY package-lock.json .
+COPY package*.json ./
 COPY prisma ./prisma
-COPY .env .
-COPY tsconfig.json .
+COPY .env ./
+COPY tsconfig.json ./
 
-RUN npm install 
-RUN npx prisma generate
+RUN npm install
+#RUN npx prisma generate
 
-COPY . ./
+COPY . .
 
 RUN npm run build
 
-ENV PORT ${PORT}
-EXPOSE $PORT
+#FROM node:20-alpine3.17 
+
+#COPY --from=build /home/node_modules ./node_modules
+#COPY --from=build /home/package*.json ./
+#COPY --from=build /home/dist ./dist
+#COPY --from=build /home/prisma ./prisma
+
+EXPOSE 3000
+
+#CMD [ "npm", "run", "start:migrate:prod" ]
 
 CMD [ "node", "./dist/index.js" ]
