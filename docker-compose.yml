@@ -1,6 +1,7 @@
 version: '3.8'
 services:
-  node-app:
+  node:
+    container_name: node
     build:
       context: .
       target: build
@@ -15,6 +16,7 @@ services:
       - local
     depends_on:
       - db
+
   db:
     extends:
       file: docker-compose.db.yml
