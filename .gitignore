@@ -140,4 +140,4 @@ dist
 .svelte-kit
 .vscode
 
-prisma/migrations
+#prisma/migrations
