@@ -11,7 +11,7 @@ services:
     ports:
       - ${PORT}:${PORT}
     env_file: ./.env
-    command: npm run start
+    command: npm run start:migrate:prod
     networks:
       - local
     depends_on:
