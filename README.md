@@ -1,4 +1,4 @@
-# Git-Tool App
+# Animals App
 
 Animals App is a simple Node.js application built with Express.js and TypeScript that allows you to manage a list of animals. You can add, edit, and retrieve animal records.
 
